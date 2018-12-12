@@ -47,7 +47,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuild
    $bot = new LINEBot($httpClient, array('channelSecret' => LINE_MESSAGE_CHANNEL_SECRET));
  
 // userId 
-$userId = ' userId ของผู้ใช้ที่เราต้องการส่งข้อความ push ไปแสดง ';
+$userId = 'Ud2f9a8bbdd6e167dff9923cf2e718a73';
 // ทดสอบส่ง push ข้อความอย่างง่าย
 $textPushMessage = 'สวัสดีครับ';                
 $messageData = new TextMessageBuilder($textPushMessage);        
