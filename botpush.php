@@ -16,7 +16,7 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('1');
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
 
-echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+echo $response->getHTTPStatus() . 'WTF' . $response->getRawBody();
 
 
 
