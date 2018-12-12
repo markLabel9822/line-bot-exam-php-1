@@ -1,69 +1,36 @@
 <?php
-// กรณีต้องการตรวจสอบการแจ้ง error ให้เปิด 3 บรรทัดล่างนี้ให้ทำงาน กรณีไม่ ให้ comment ปิดไป
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
- 
-// include composer autoload
-require_once '../../vendor/autoload.php';
- 
-// การตั้งเกี่ยวกับ bot
-require_once 'bot_settings.php';
- 
-// กรณีมีการเชื่อมต่อกับฐานข้อมูล
-//require_once("dbconnect.php");
- 
-///////////// ส่วนของการเรียกใช้งาน class ผ่าน namespace
-use LINE\LINEBot;
-use LINE\LINEBot\HTTPClient;
-use LINE\LINEBot\HTTPClient\CurlHTTPClient;
-//use LINE\LINEBot\Event;
-//use LINE\LINEBot\Event\BaseEvent;
-//use LINE\LINEBot\Event\MessageEvent;
-use LINE\LINEBot\MessageBuilder;
-use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
-use LINE\LINEBot\MessageBuilder\StickerMessageBuilder;
-use LINE\LINEBot\MessageBuilder\ImageMessageBuilder;
-use LINE\LINEBot\MessageBuilder\LocationMessageBuilder;
-use LINE\LINEBot\MessageBuilder\AudioMessageBuilder;
-use LINE\LINEBot\MessageBuilder\VideoMessageBuilder;
-use LINE\LINEBot\ImagemapActionBuilder;
-use LINE\LINEBot\ImagemapActionBuilder\AreaBuilder;
-use LINE\LINEBot\ImagemapActionBuilder\ImagemapMessageActionBuilder ;
-use LINE\LINEBot\ImagemapActionBuilder\ImagemapUriActionBuilder;
-use LINE\LINEBot\MessageBuilder\Imagemap\BaseSizeBuilder;
-use LINE\LINEBot\MessageBuilder\ImagemapMessageBuilder;
-use LINE\LINEBot\MessageBuilder\MultiMessageBuilder;
-use LINE\LINEBot\TemplateActionBuilder;
-use LINE\LINEBot\TemplateActionBuilder\DatetimePickerTemplateActionBuilder;
-use LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder;
-use LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder;
-use LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder;
-use LINE\LINEBot\MessageBuilder\TemplateBuilder;
-use LINE\LINEBot\MessageBuilder\TemplateMessageBuilder;
-use LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder;
-use LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder;
-use LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder;
-use LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder;
-use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselTemplateBuilder;
-use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuilder;
- 
- 
-$httpClient = new CurlHTTPClient(LINE_MESSAGE_ACCESS_TOKEN);
-$bot = new LINEBot($httpClient, array('channelSecret' => LINE_MESSAGE_CHANNEL_SECRET));
- 
-// userId 
-$userId = 'Ud2f9a8bbdd6e167dff9923cf2e718a73';
-// ทดสอบส่ง push ข้อความอย่างง่าย
-$textPushMessage = 'WTF';                
-$messageData = new TextMessageBuilder($textPushMessage);        
-             
-$response = $bot->pushMessage($userId,$messageData);
-if ($response->isSucceeded()) {
-    echo 'Succeeded!';
-    return;
-}
- 
-// Failed
-echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+   $accessToken = "";//copy ข้อความ Channel access token ตอนที่ตั้งค่า
+   $content = file_get_contents('php://input');
+   $arrayJson = json_decode($content, true);
+   $arrayHeader = array();
+   $arrayHeader[] = "Content-Type: application/json";
+   $arrayHeader[] = "Authorization: Bearer {$accessToken}";
+   //รับข้อความจากผู้ใช้
+   $message = $arrayJson['events'][0]['message']['text'];
+   //รับ id ของผู้ใช้
+   $id = $arrayJson['events'][0]['source']['userId'];
+   #ตัวอย่าง Message Type "Text + Sticker"
+   if($message == "สวัสดี"){
+      $arrayPostData['to'] = $id;
+      $arrayPostData['messages'][0]['type'] = "text";
+      $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าาา";
+      $arrayPostData['messages'][1]['type'] = "sticker";
+      $arrayPostData['messages'][1]['packageId'] = "2";
+      $arrayPostData['messages'][1]['stickerId'] = "34";
+      pushMsg($arrayHeader,$arrayPostData);
+   }
+   function pushMsg($arrayHeader,$arrayPostData){
+      $strUrl = "https://api.line.me/v2/bot/message/push";
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_URL,$strUrl);
+      curl_setopt($ch, CURLOPT_HEADER, false);
+      curl_setopt($ch, CURLOPT_POST, true);
+      curl_setopt($ch, CURLOPT_HTTPHEADER, $arrayHeader);
+      curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrayPostData));
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
+      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+      $result = curl_exec($ch);
+      curl_close ($ch);
+   }
+   exit;
 ?>
