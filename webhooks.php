@@ -1,9 +1,19 @@
 <?php
-   $accessToken = "rDQCJiR/ODdFOlA5JMKP6nLWZWI4FWE/p6G2rugsbdj2+KYSmADZyMNnMa4auy7NQ5gWJBYUrKUUyBw/hhh3iZ2+y8Rt08/MHKbWTAlAiP6eXZfGCa9jaDP39DmrhMG4XK8iDNvm6FrEpbJFlNU6FgdB04t89/1O/w1cDnyilFU=";//copy ข้อความ Channel access token ตอนที่ตั้งค่า
-   $content = file_get_contents('php://input');
-   $arrayJson = json_decode($content, true);
-   $arrayHeader = array();
-   $arrayHeader[] = "Content-Type: application/json";
+// กรณีต้องการตรวจสอบการแจ้ง error ให้เปิด 3 บรรทัดล่างนี้ให้ทำงาน กรณีไม่ ให้ comment ปิดไป
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+ 
+// include composer autoload
+require_once '../vendor/autoload.php';
+ 
+// การตั้งเกี่ยวกับ bot
+require_once 'bot_settings.php';
+ 
+// กรณีมีการเชื่อมต่อกับฐานข้อมูล
+//require_once("dbconnect.php");
+ 
+///////////// ส่วนของการเรียกใช้งาน class ผ่าน namespace
 use LINE\LINEBot;
 use LINE\LINEBot\HTTPClient;
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
@@ -37,19 +47,15 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselTemplateBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuilder;
-
-
-   $arrayHeader[] = "Authorization: Bearer {$accessToken}";
-   //รับข้อความจากผู้ใช้
-   $message = $arrayJson['events'][0]['message']['text'];
-   //รับ id ของผู้ใช้
- $httpClient = new CurlHTTPClient(LINE_MESSAGE_ACCESS_TOKEN);
-   $bot = new LINEBot($httpClient, array('channelSecret' => LINE_MESSAGE_CHANNEL_SECRET));
+ 
+ 
+$httpClient = new CurlHTTPClient(LINE_MESSAGE_ACCESS_TOKEN);
+$bot = new LINEBot($httpClient, array('channelSecret' => LINE_MESSAGE_CHANNEL_SECRET));
  
 // userId 
 $userId = 'Ud2f9a8bbdd6e167dff9923cf2e718a73';
 // ทดสอบส่ง push ข้อความอย่างง่าย
-$textPushMessage = 'สวัสดีครับ';                
+$textPushMessage = 'Hello world';                
 $messageData = new TextMessageBuilder($textPushMessage);        
              
 $response = $bot->pushMessage($userId,$messageData);
