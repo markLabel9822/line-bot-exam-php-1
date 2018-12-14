@@ -103,10 +103,7 @@ if($LineLogin->verifyToken($accToken)){
 <form method="post">
 <button type="submit" name="lineLogout">LINE Logout</button>
 </form>
-<?php }else
-
-
-{ ?>
+<?php }else{ ?>
 <form method="post">
 <button type="submit" name="lineLogin">LINE Login</button>
 </form>   
