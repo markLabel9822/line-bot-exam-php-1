@@ -70,11 +70,7 @@ if(isset($_SESSION['ses_login_userData_val']) && $_SESSION['ses_login_userData_v
  
 
 if(isset($_SESSION['ses_login_refreshToken_val']) && $_SESSION['ses_login_refreshToken_val']!=""){
-    echo '
-    <form method="post">
-    <button type="submit" name="refreshToken">Refresh Access Token</button>
-    </form>   
-    ';  
+   
 }
 if(isset($_SESSION['ses_login_refreshToken_val']) && $_SESSION['ses_login_refreshToken_val']!=""){
     if(isset($_POST['refreshToken'])){
@@ -123,11 +119,7 @@ if(isset($_POST['lineLogout'])){
     if($LineLogin->revokeToken($accToken)){
         echo "Logout Line Success<br>";   
     }
-    echo '
-    <form method="post">
-    <button type="submit" name="lineLogin">LINE Login</button>
-    </form>   
-    ';
+   
     $LineLogin->redirect("login_uselib.php");
 }
 ?>
