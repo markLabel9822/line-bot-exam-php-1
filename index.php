@@ -128,7 +128,16 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 		<div class="sub-main">	
 			<form action="#" method="post">
 <?php
-				   echo "Line UserID: ".$lineUserData['sub']."<br>";
+			 
+if(isset($_SESSION['ses_login_userData_val']) && $_SESSION['ses_login_userData_val']!=""){
+    // GET USER DATA FROM ID TOKEN
+    $lineUserData = json_decode($_SESSION['ses_login_userData_val'],true);
+   // print_r($lineUserData); 
+    //echo "<hr>";
+    echo "Line UserID: ".$lineUserData['sub']."<br>";
+   
+ 
+}
 	?>
 				<input placeholder="First Name" name="Name" class="name" type="text" required="">
 					<span class="icon1"><i class="fa fa-user" aria-hidden="true"></i></span><br>
