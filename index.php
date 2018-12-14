@@ -64,7 +64,7 @@ if(isset($_SESSION['ses_login_userData_val']) && $_SESSION['ses_login_userData_v
     //echo "<hr>";
  
     //แสดงชื่่อ UserID
-    echo "Line UserID: ".$lineUserData['sub']."<br>";
+   // echo "Line UserID: ".$lineUserData['sub']."<br>";
    
  
 }
@@ -129,6 +129,9 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 <?php 
 
  echo "Line UserID: ".$lineUserData['sub']."<br>";
+<br>
+	<br>
+
 ?>
 
 
