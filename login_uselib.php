@@ -49,12 +49,12 @@ if($LineLogin->verifyToken($accToken)){
 //////////////////////////
 
 // GET LINE USER PROFILE 
-$userInfo = $LineLogin->userProfile($accToken,true);
+/*$userInfo = $LineLogin->userProfile($accToken,true);
 if(!is_null($userInfo) && is_array($userInfo) && array_key_exists('userId',$userInfo)){
     print_r($userInfo);
 }
  
-//exit;
+//exit;*/
 
  
 if(isset($_SESSION['ses_login_userData_val']) && $_SESSION['ses_login_userData_val']!=""){
