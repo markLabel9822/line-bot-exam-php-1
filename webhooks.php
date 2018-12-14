@@ -59,7 +59,7 @@ $userIds = array(
       
 );      
 // ทดสอบส่ง push ข้อความอย่างง่าย
-$textPushMessage = 'สวัสดีครับ';                
+$textPushMessage = 'http://digitalcontent.top/what-is-the-rich-menu/';                
 $messageData = new TextMessageBuilder($textPushMessage);        
              
 $response = $bot->multicast($userIds,$messageData);
