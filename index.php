@@ -127,6 +127,12 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<h2 class="sub-head">Register</h2>
 		<div class="sub-main">	
 			<form action="#" method="post">
+
+				
+		<?php
+echo "<hr>";
+if($LineLogin->verifyToken($accToken)){
+?>
 				<input placeholder="First Name" name="Name" class="name" type="text" required="">
 					<span class="icon1"><i class="fa fa-user" aria-hidden="true"></i></span><br>
 				<input placeholder="Last Name" name="Name" class="name2" type="text" required="">
