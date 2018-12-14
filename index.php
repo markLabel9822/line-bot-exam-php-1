@@ -120,17 +120,20 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<div class="header-w3l">
 		<h1>Valet Parking</h1>
 
-		<?php
-echo "<hr>";
-if($LineLogin->verifyToken($accToken)){
-?>
-	</div>
+
 <!--//header-->
 <!--main-->
 <div class="main-agileits">
 	<h2 class="sub-head">Register</h2>
 		<div class="sub-main">	
 			<form action="#" method="post">
+	<?php
+echo "<hr>";
+if($LineLogin->verifyToken($accToken)){
+?>
+	</div>
+	<br>
+
 				<input placeholder="First Name" name="Name" class="name" type="text" required="">
 					<span class="icon1"><i class="fa fa-user" aria-hidden="true"></i></span><br>
 				<input placeholder="Last Name" name="Name" class="name2" type="text" required="">
