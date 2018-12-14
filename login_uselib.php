@@ -1,4 +1,8 @@
 <?php
+
+
+
+
 session_start();
 require_once("LineLoginLib.php");
  
@@ -27,7 +31,7 @@ $accToken = $_SESSION['ses_login_accToken_val'];
 // Status Token Check
 if($LineLogin->verifyToken($accToken)){
     echo $accToken."<br><hr>";
-    echo "Token Status OK <br>";  
+    echo "Token Status  <br>";  
 }
  
  
@@ -60,8 +64,8 @@ if(isset($_SESSION['ses_login_userData_val']) && $_SESSION['ses_login_userData_v
     print_r($lineUserData); 
     echo "<hr>";
     echo "Line UserID: ".$lineUserData['sub']."<br>";
-    echo "Line Display Name: ".$lineUserData['name']."<br>";
-    echo '<img style="width:100px;" src="'.$lineUserData['picture'].'" /><br>';
+   
+ 
 }
  
  
@@ -103,6 +107,7 @@ if($LineLogin->verifyToken($accToken)){
 <form method="post">
 <button type="submit" name="lineLogin">LINE Login</button>
 </form>   
+
 <?php } ?>
 <?php
 if(isset($_POST['lineLogin'])){
