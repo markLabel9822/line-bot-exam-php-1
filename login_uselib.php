@@ -60,7 +60,7 @@ if(!is_null($userInfo) && is_array($userInfo) && array_key_exists('userId',$user
 if(isset($_SESSION['ses_login_userData_val']) && $_SESSION['ses_login_userData_val']!=""){
     // GET USER DATA FROM ID TOKEN
     $lineUserData = json_decode($_SESSION['ses_login_userData_val'],true);
-    print_r($lineUserData); 
+   // print_r($lineUserData); 
     //echo "<hr>";
     echo "Line UserID: ".$lineUserData['sub']."<br>";
    
