@@ -74,15 +74,6 @@ if(isset($_SESSION['ses_login_userData_val']) && $_SESSION['ses_login_userData_v
  
 
  
-if(isset($_SESSION['ses_login_userData_val']) && $_SESSION['ses_login_userData_val']!=""){
-    // GET USER DATA FROM ID TOKEN
-    $lineUserData = json_decode($_SESSION['ses_login_userData_val'],true);
-    print_r($lineUserData); 
-   // echo "<hr>";
-    echo "Line UserID: ".$lineUserData['sub']."<br>";
-   
-}
- 
  
 
 
@@ -128,15 +119,11 @@ if(isset($_POST['lineLogout'])){
         $_SESSION['ses_login_refreshToken_val'],
         $_SESSION['ses_login_userData_val']
     );  
-    echo "<hr>";
+   
     if($LineLogin->revokeToken($accToken)){
-        echo "Logout Line Success<br>";   
+         
     }
-    echo '
-    <form method="post">
-    <button type="submit" name="lineLogin">LINE Login</button>
-    </form>   
-    ';
+  
     $LineLogin->redirect("login_uselib.php");
 }
 ?>
