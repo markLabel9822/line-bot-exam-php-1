@@ -23,13 +23,7 @@ if(!isset($_SESSION['ses_login_accToken_val'])){
     exit;
 }
  
-$accToken = $_SESSION['ses_login_accToken_val'];
-// Status Token Check
-if($LineLogin->verifyToken($accToken)){
-    echo $accToken."<br><hr>";
-    echo "Token Status OK <br>";  
-}
- 
+
  
 
 
