@@ -115,53 +115,53 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 </head>
 <body>
 <!--header-->
-	<div class="header-w3l">
-		<h1>Valet Parking</h1>
-	</div>
+    <div class="header-w3l">
+        <h1>Valet Parking</h1>
+    </div>
 <!--//header-->
 <!--main-->
 <div class="main-agileits">
-	<h2 class="sub-head">Register</h2>
-		<div class="sub-main">	
-			<form action="#" method="post">
+    <h2 class="sub-head">Register</h2>
+        <div class="sub-main">  
+            <form action="#" method="post">
 
 
 <?php 
 
  echo "Line UserID: ".$lineUserData['sub']."<br>";
 <br>
-	<br>
+    <br>
 
 ?>
 
 
-				<input placeholder="First Name" name="Name" class="name" type="text" required="">
-					<span class="icon1"><i class="fa fa-user" aria-hidden="true"></i></span><br>
-				<input placeholder="Last Name" name="Name" class="name2" type="text" required="">
-					<span class="icon2"><i class="fa fa-user" aria-hidden="true"></i></span><br>
-				<input placeholder="Phone Number" name="Number" class="number" type="text" required="">
-					<span class="icon3"><i class="fa fa-phone" aria-hidden="true"></i></span><br>
-				<input placeholder="Email" name="mail" class="mail" type="text" required="">
-					<span class="icon4"><i class="fa fa-envelope" aria-hidden="true"></i></span><br>
-				<input  placeholder="Password" name="Password" class="pass" type="password" required="">
-					<span class="icon5"><i class="fa fa-unlock" aria-hidden="true"></i></span><br>
-				<input  placeholder="Confirm Password" name="Password" class="pass" type="password" required="">
-					<span class="icon6"><i class="fa fa-unlock" aria-hidden="true"></i></span><br>
-				
-				<input type="submit" value="sign up">
-			</form>
-		</div>
-		<div class="clear"></div>
+                <input placeholder="First Name" name="Name" class="name" type="text" required="">
+                    <span class="icon1"><i class="fa fa-user" aria-hidden="true"></i></span><br>
+                <input placeholder="Last Name" name="Name" class="name2" type="text" required="">
+                    <span class="icon2"><i class="fa fa-user" aria-hidden="true"></i></span><br>
+                <input placeholder="Phone Number" name="Number" class="number" type="text" required="">
+                    <span class="icon3"><i class="fa fa-phone" aria-hidden="true"></i></span><br>
+                <input placeholder="Email" name="mail" class="mail" type="text" required="">
+                    <span class="icon4"><i class="fa fa-envelope" aria-hidden="true"></i></span><br>
+                <input  placeholder="Password" name="Password" class="pass" type="password" required="">
+                    <span class="icon5"><i class="fa fa-unlock" aria-hidden="true"></i></span><br>
+                <input  placeholder="Confirm Password" name="Password" class="pass" type="password" required="">
+                    <span class="icon6"><i class="fa fa-unlock" aria-hidden="true"></i></span><br>
+                
+                <input type="submit" value="sign up">
+            </form>
+        </div>
+        <div class="clear"></div>
 </div>
 <!--//main-->
 
 <!--footer-->
 <div class="footer-w3">
-	<p>&copy; 2018 Valet Parking . All rights reserved | Design by MarkLabel</a></p>
+    <p>&copy; 2018 Valet Parking . All rights reserved | Design by MarkLabel</a></p>
 </div>
 
 
-<?php } ?>
+
 <?php
 if(isset($_POST['lineLogin'])){
     $LineLogin->authorize(); 
