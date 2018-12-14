@@ -61,7 +61,7 @@ if(isset($_SESSION['ses_login_userData_val']) && $_SESSION['ses_login_userData_v
     // GET USER DATA FROM ID TOKEN
     $lineUserData = json_decode($_SESSION['ses_login_userData_val'],true);
     print_r($lineUserData); 
-    echo "<hr>";
+    //echo "<hr>";
     echo "Line UserID: ".$lineUserData['sub']."<br>";
    
  
