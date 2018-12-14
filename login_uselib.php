@@ -26,8 +26,37 @@ if(!isset($_SESSION['ses_login_accToken_val'])){
     $LineLogin->authorize(); 
     exit;
 }
-Status Token Check
+ 
+$accToken = $_SESSION['ses_login_accToken_val'];
+// Status Token Check
+if($LineLogin->verifyToken($accToken)){
+ 
+  
+}
+ 
+ 
+// Status Token Check with Result 
+//$statusToken = $LineLogin->verifyToken($accToken, true);
+//print_r($statusToken);
+ 
+ 
+//////////////////////////
 
+// GET LINE USERID FROM USER PROFILE
+//$userID = $LineLogin->userProfile($accToken);
+//echo $userID;
+ 
+//////////////////////////
+
+// GET LINE USER PROFILE 
+$userInfo = $LineLogin->userProfile($accToken,true);
+if(!is_null($userInfo) && is_array($userInfo) && array_key_exists('userId',$userInfo)){
+    print_r($userInfo);
+}
+ 
+//exit;
+
+ 
 if(isset($_SESSION['ses_login_userData_val']) && $_SESSION['ses_login_userData_val']!=""){
     // GET USER DATA FROM ID TOKEN
     $lineUserData = json_decode($_SESSION['ses_login_userData_val'],true);
@@ -39,7 +68,7 @@ if(isset($_SESSION['ses_login_userData_val']) && $_SESSION['ses_login_userData_v
 }
  
  
-echo "<hr>";
+
 if(isset($_SESSION['ses_login_refreshToken_val']) && $_SESSION['ses_login_refreshToken_val']!=""){
     echo '
     <form method="post">
