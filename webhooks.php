@@ -59,7 +59,8 @@ $userIds = array(
       
 );      
 // ทดสอบส่ง push ข้อความอย่างง่าย
-$textPushMessage = 'line://app/1627778870-WG86pJ67';                
+//$textPushMessage = 'line://app/1627778870-WG86pJ67';       
+$textPushMessage = 'webhooks';   
 $messageData = new TextMessageBuilder($textPushMessage);        
              
 $response = $bot->multicast($userIds,$messageData);
