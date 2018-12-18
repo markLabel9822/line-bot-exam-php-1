@@ -11,9 +11,9 @@ error_reporting(E_ALL);
 //require_once("dbconnect.php");
  
 /// ส่วนการกำหนดค่านี้สามารถทำเป็นไฟล์ include แทนได้
-define('LINE_LOGIN_CHANNEL_ID','กรอก Channel ID ของเรา');
-define('LINE_LOGIN_CHANNEL_SECRET','กรอก Channel secret ของเรา');
-define('LINE_LOGIN_CALLBACK_URL','กรอก Callback URL ของเรา เช่น https://www.example.com/login_uselib_callback.php');
+define('LINE_LOGIN_CHANNEL_ID','1627383407');
+define('LINE_LOGIN_CHANNEL_SECRET','0fb631952a72d1ea886e56b4433c37f5');
+define('LINE_LOGIN_CALLBACK_URL','https://testing9822.herokuapp.com/login_uselib_callback.php');
  
 $LineLogin = new LineLoginLib(
     LINE_LOGIN_CHANNEL_ID, LINE_LOGIN_CHANNEL_SECRET, LINE_LOGIN_CALLBACK_URL);
