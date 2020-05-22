@@ -14,9 +14,9 @@ $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 
 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder
-  ('การลาของคุณได้รับการอนุมัติแล้ว
+  ('การลาของคุณไม่ได้รับการอนุมัติ
 
-โปรดตรวจสอบข้อมูลอีกครั้ง');
+โปรดตรวจสอบข้อมูลอีกครั้ง หรือเจ้าหน้าที่');
 
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
 
