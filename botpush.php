@@ -13,8 +13,8 @@ $pushID = 'U2e3903a1a4ea6c7840c2cfa2e35d0eb1';
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 
-// $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello world');
-$textMessageBuilder = ('การลาของคุณได้รับการอนุมัติแล้ว');
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('การลาของคุณได้รับการอนุมัติแล้ว');
+
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
 
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
