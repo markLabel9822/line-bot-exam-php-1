@@ -15,11 +15,8 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder
   ('การลาของคุณไม่ได้รับการอนุมัติ
 
-โปรดตรวจสอบข้อมูลอีกครั้งได้ที่ลิ้งด้านล่าง หรือติดต่อเจ้าหน้าที่
-
-
-
-
+โปรดตรวจสอบข้อมูลอีกครั้งที่ลิ้งด้านล่าง 
+หรือติดต่อเจ้าหน้าที่
 ');
 
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
